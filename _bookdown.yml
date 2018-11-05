@@ -17,6 +17,6 @@ rmd_files: ["index.Rmd",
             "13-ch13.Rmd",
             "14-ch14.Rmd",
             "15-ch15.Rmd",
-            "16-ch16.Rmd",
-            "17-references.Rmd"]
-            
+            "16-ch16.Rmd"
+            #"17-references.Rmd"
+            ]

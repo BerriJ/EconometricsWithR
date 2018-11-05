@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Econometrics with R</title>
+  <meta name="description" content="Beginners with little background in statistics and econometrics often have a hard time understanding the benefits of having programming skills for learning and applying Econometrics. ‘Introduction to Econometrics with R’ is an interactive companion to the well-received textbook ‘Introduction to Econometrics’ by James H. Stock and Mark W. Watson (2015). It gives a gentle introduction to the essentials of R programming and guides students in implementing the empirical applications presented throughout the textbook using the newly aquired skills. This is supported by interactive programming exercises generated with DataCamp Light and integration of interactive visualizations of central concepts which are based on the flexible JavaScript library D3.js.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Econometrics with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://www.econometrics-with-r.org/" />
+  <meta property="og:image" content="https://www.econometrics-with-r.org/images/cover.png" />
+  <meta property="og:description" content="Beginners with little background in statistics and econometrics often have a hard time understanding the benefits of having programming skills for learning and applying Econometrics. ‘Introduction to Econometrics with R’ is an interactive companion to the well-received textbook ‘Introduction to Econometrics’ by James H. Stock and Mark W. Watson (2015). It gives a gentle introduction to the essentials of R programming and guides students in implementing the empirical applications presented throughout the textbook using the newly aquired skills. This is supported by interactive programming exercises generated with DataCamp Light and integration of interactive visualizations of central concepts which are based on the flexible JavaScript library D3.js." />
+  <meta name="github-repo" content="mca91/EconometricsWithR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Econometrics with R" />
+  
+  <meta name="twitter:description" content="Beginners with little background in statistics and econometrics often have a hard time understanding the benefits of having programming skills for learning and applying Econometrics. ‘Introduction to Econometrics with R’ is an interactive companion to the well-received textbook ‘Introduction to Econometrics’ by James H. Stock and Mark W. Watson (2015). It gives a gentle introduction to the essentials of R programming and guides students in implementing the empirical applications presented throughout the textbook using the newly aquired skills. This is supported by interactive programming exercises generated with DataCamp Light and integration of interactive visualizations of central concepts which are based on the flexible JavaScript library D3.js." />
+  <meta name="twitter:image" content="https://www.econometrics-with-r.org/images/cover.png" />
+
+<meta name="author" content="Christoph Hanck, Martin Arnold, Alexander Gerber and Martin Schmelzer">
+
+
+<meta name="date" content="2018-11-05">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="2-6-analysis-of-the-test-score-data-set.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<!-- font families -->
+
+<link href="https://fonts.googleapis.com/css?family=PT+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
+
+<script src="js/hideOutput.js"></script>
+
+<!-- Mathjax -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/default.js"></script>
+
+ <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "TeX/AMSmath.js"],
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        jax: ["input/TeX","output/CommonHTML"]
+      });
+      MathJax.Hub.processSectionDelay = 0;
+  </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110299877-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-110299877-1');
+</script>
+
+<!-- open review block -->
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><center><img src="images/logo.png" alt="logo" width="50%" height="50%"style="margin: 15px 0 0 0"></center></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="1-introduction.html"><a href="1-introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-a-very-short-introduction-to-r-and-rstudio.html"><a href="1-1-a-very-short-introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1.1</b> A Very Short Introduction to <tt>R</tt> and <em>RStudio</em></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-htaciimr.html"><a href="2-htaciimr.html"><i class="fa fa-check"></i><b>2</b> Hypothesis Tests and Confidence Intervals in Multiple Regression</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-hypothesis-tests-and-confidence-intervals-for-a-single-coefficient.html"><a href="2-1-hypothesis-tests-and-confidence-intervals-for-a-single-coefficient.html"><i class="fa fa-check"></i><b>2.1</b> Hypothesis Tests and Confidence Intervals for a Single Coefficient</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-an-application-to-test-scores-and-the-student-teacher-ratio.html"><a href="2-2-an-application-to-test-scores-and-the-student-teacher-ratio.html"><i class="fa fa-check"></i><b>2.2</b> An Application to Test Scores and the Student-Teacher Ratio</a><ul>
+<li class="chapter" data-level="" data-path="2-2-an-application-to-test-scores-and-the-student-teacher-ratio.html"><a href="2-2-an-application-to-test-scores-and-the-student-teacher-ratio.html#another-augmentation-of-the-model"><i class="fa fa-check"></i>Another Augmentation of the Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-3-joint-hypothesis-testing-using-the-f-statistic.html"><a href="2-3-joint-hypothesis-testing-using-the-f-statistic.html"><i class="fa fa-check"></i><b>2.3</b> Joint Hypothesis Testing Using the F-Statistic</a></li>
+<li class="chapter" data-level="2.4" data-path="2-4-confidence-sets-for-multiple-coefficients.html"><a href="2-4-confidence-sets-for-multiple-coefficients.html"><i class="fa fa-check"></i><b>2.4</b> Confidence Sets for Multiple Coefficients</a></li>
+<li class="chapter" data-level="2.5" data-path="2-5-model-specification-for-multiple-regression.html"><a href="2-5-model-specification-for-multiple-regression.html"><i class="fa fa-check"></i><b>2.5</b> Model Specification for Multiple Regression</a><ul>
+<li class="chapter" data-level="" data-path="2-5-model-specification-for-multiple-regression.html"><a href="2-5-model-specification-for-multiple-regression.html#model-specification-in-theory-and-in-practice"><i class="fa fa-check"></i>Model Specification in Theory and in Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="2-6-analysis-of-the-test-score-data-set.html"><a href="2-6-analysis-of-the-test-score-data-set.html"><i class="fa fa-check"></i><b>2.6</b> Analysis of the Test Score Data Set</a></li>
+<li class="chapter" data-level="2.7" data-path="2-7-exercises.html"><a href="2-7-exercises.html"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Econometrics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div class = rmdreview>
+This book is in <b>Open Review</b>. We want your feedback to make the book better for you and other students. You may annotate some text by <span style="background-color: #3297FD; color: white">selecting it with the cursor</span> and then click the <i class="h-icon-annotate"></i> on the pop-up menu. You can also see the annotations of others: click the <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
+<div id="exercises" class="section level2">
+<h2><span class="header-section-number">2.7</span> Exercises</h2>
+<div class="DCexercise">
+<h4 id="hypothesis-testing-in-a-multiple-regression-model-t-statistics-and-p-values" class="unnumbered">1. Hypothesis Testing in a Multiple Regression Model — <span class="math inline">\(t\)</span>-statistics and <span class="math inline">\(p\)</span>-values</h4>
+<p>Reconsider the <tt>Boston</tt> data set and the following estimated model (homoscedasticity-only standard errors in parentheses) from the previous chapter:</p>
+<p><span class="math display">\[\widehat{medv}_i = \underset{(0.75)}{32.828} -\underset{(0.05)}{0.994} \times lstat_i -\underset{(0.04)}{0.083} \times crim_i + \underset{(0.01)}{0.038} \times age_i.\]</span></p>
+<p>Just as in the simple linear regression framework we can conduct hypothesis tests about the coefficients in multiple regression models. The most common hypothesis is <span class="math inline">\(H_0:\beta_j=0\)</span> against the alternative <span class="math inline">\(H_1:\beta_j\ne 0\)</span> for some <span class="math inline">\(j\)</span> in <span class="math inline">\(0,1,\dots,k\)</span>.</p>
+<p>The packages <tt>AER</tt> and <tt>MASS</tt> have been loaded. The coefficient estimates as well as the corresponding standard errors are available in <tt>coefs</tt> and <tt>SEs</tt>, respectively.</p>
+<p><strong>Instructions:</strong></p>
+<p>Use vector arithmetics to solve the following tasks:</p>
+<ul>
+<li><p>Compute <span class="math inline">\(t\)</span>-statistics for each coefficient by using the predefined objects <tt>coefs</tt> and <tt>SEs</tt>. Assign them to <tt>tstats</tt>.</p></li>
+<li><p>Compute <span class="math inline">\(p\)</span>-values for each coefficient and assign them to <tt>pval</tt>.</p></li>
+<li><p>Check with the help of logical operators whether the hypotheses are rejected at the <span class="math inline">\(1\%\)</span> significance level.</p></li>
+</ul>
+<iframe src="DCL/ex7_1.html" frameborder="0" scrolling="no" style="width:100%;height:340px">
+</iframe>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><p>The <span class="math inline">\(t\)</span>-statistic for each coefficient is defined as <span class="math inline">\(t=\frac{\widehat{\beta}_j-\beta_{j,0}}{SE(\widehat{\beta}_j)}\)</span>.</p></li>
+<li><p>The <span class="math inline">\(p\)</span>-value for a two-sided test using is computed as <span class="math inline">\(2\cdot\Phi(-|t^{act}|)\)</span> where <span class="math inline">\(t^{act}\)</span> denotes the computed <span class="math inline">\(t\)</span>-statistic.</p></li>
+</ul>
+</div>
+<div class="DCexercise">
+<h4 id="hypothesis-testing-in-a-multiple-regression-model---confidence-intervals" class="unnumbered">2. Hypothesis Testing in a Multiple Regression Model - Confidence Intervals</h4>
+<p>Consider again the estimated model</p>
+<p><span class="math display">\[\widehat{medv}_i = \underset{(0.75)}{32.828} -\underset{(0.05)}{0.994} \times lstat_i -\underset{(0.04)}{0.083} \times crim_i + \underset{(0.01)}{0.038} \times age_i.\]</span></p>
+<p>which is available as the object <tt>mod</tt> in your working environment. The packages <tt>AER</tt> and <tt>MASS</tt> have been loaded.</p>
+<p><strong>Instructions:</strong></p>
+<ul>
+<li>Construct <span class="math inline">\(99\%\)</span> confidence intervals for all model coefficients. Use the intervals to decide whether the individual null hypotheses <span class="math inline">\(H_0:\beta_j=0\)</span>, <span class="math inline">\(j=0,1,2,3,4\)</span> are rejected at the <span class="math inline">\(1\%\)</span> level.</li>
+</ul>
+<iframe src="DCL/ex7_2.html" frameborder="0" scrolling="no" style="width:100%;height:340px">
+</iframe>
+<p><strong>Hint:</strong></p>
+<ul>
+<li>You may use <tt>confint()</tt> to construct confidence intervals. The confidence level can be set via the argument <tt>level</tt>.</li>
+</ul>
+</div>
+<div class="DCexercise">
+<h4 id="robust-hypothesis-testing-in-multiple-regression-models" class="unnumbered">3. Robust Hypothesis Testing in Multiple Regression Models</h4>
+<p>The <tt>lm</tt> object <tt>mod</tt> from the previous exercises is available in your working environment. The packages <tt>AER</tt> and <tt>MASS</tt> have been loaded.</p>
+<p><strong>Instructions:</strong></p>
+<ul>
+<li><p>Print a coefficient summary that reports heteroscedasticity-robust standard errors.</p></li>
+<li><p>Access entries of the matrix generated by <tt>coeftest()</tt> to check whether the hypotheses are rejected at a 1% significance level. Use logical operators <tt>&lt;,&gt;</tt>.</p></li>
+</ul>
+<iframe src="DCL/ex7_3.html" frameborder="0" scrolling="no" style="width:100%;height:340px">
+</iframe>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><p>Using the argument <tt>vcov.</tt> in <tt>coeftest()</tt> forces the function to use robust standard errors.</p></li>
+<li><p>The <span class="math inline">\(p\)</span>-values are contained in the fourth column of the output generated by <tt>coeftest()</tt>. Use square brackets to subset the matrix accordingly.</p></li>
+</ul>
+</div>
+<div class="DCexercise">
+<h4 id="joint-hypothesis-testing-f-test-i" class="unnumbered">4. Joint Hypothesis Testing — <span class="math inline">\(F\)</span>-Test I</h4>
+<p>Sometimes we are interested in testing joint hypotheses which impose restrictions on <em>multiple</em> regression coefficients. For example, in the model</p>
+<p><span class="math display">\[medv_i = \beta_0 + \beta_1\times lstat_i + \beta_2\times crim_i + \beta_3\times age_i + u_i\]</span></p>
+<p>we may test the null <span class="math inline">\(H_0: \beta_2=\beta_3\)</span> vs. the alternative <span class="math inline">\(H_1: \beta_2\ne\beta_3\)</span> (which is a joint hypothesis as we impose a restriction on <em>two</em> regression coefficients).</p>
+<p>The basic idea behind testing such a hypothesis is to conduct two regressions and to compare the outcomes: for one of the regressions we impose the restrictions of formalized by the null (we call this the restricted regression model), whereas for the other regression the restriction is left out (we call this the unrestricted model). From this starting point we construct a test-statistic which, under the null, follows a well known distribution, an <span class="math inline">\(F\)</span> distribution (see the next exercise).</p>
+<p>However, in this exercise we start with the initial computations necessary to construct the test statistic.</p>
+<p>The packages <tt>AER</tt> and <tt>MASS</tt> have been loaded.</p>
+<p><strong>Instructions:</strong></p>
+<ul>
+<li><p>Estimate the restricted model, that is, the model where the restriction formalized by <span class="math inline">\(H_0: \beta_2=\beta_3\)</span> is assumed to be true. Save the model in <tt>model_res</tt>.</p></li>
+<li><p>Compute the <span class="math inline">\(SSR\)</span> of the restricted model and assign it to <tt>RSSR</tt>.</p></li>
+<li><p>Estimate the unrestricted model, that is, the model where the restriction is assumed to be false. Save it in <tt>model_unres</tt>.</p></li>
+<li><p>Compute the <span class="math inline">\(SSR\)</span> of the unrestricted model and assign it to <tt>USSR</tt>.</p></li>
+</ul>
+<iframe src="DCL/ex7_4.html" frameborder="0" scrolling="no" style="width:100%;height:340px">
+</iframe>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><p>The restricted model can be written as <span class="math display">\[medv_i = \beta_0 + \beta_1\times lstat_i + \beta_2\times crim_i + \beta_2\times age_i + u_i\]</span> which, after rearranging, can be expressed as <span class="math display">\[medv_i = \beta_0 + \beta_1\times lstat_i + \beta_2\times(crim_i+age_i) + u_i.\]</span></p></li>
+<li><p>The <span class="math inline">\(SSR\)</span> is defined as the sum of the squared residuals.</p></li>
+<li><p>Note that the residuals of a regression model are available as <tt>residuals</tt> in the corresponding <tt>lm</tt> object. So you can access them as usual via the <tt>$</tt>-operator.</p></li>
+</ul>
+</div>
+<div class="DCexercise">
+<h4 id="joint-hypothesis-testing-f-test-ii" class="unnumbered">5. Joint Hypothesis Testing — F-Test II</h4>
+<p>After estimating the models and computing the <span class="math inline">\(SSR\)</span>s you now have to compute the test-statistic and conduct the <span class="math inline">\(F\)</span>-test. As mentioned in the last exercise, the test-statistic follows an <span class="math inline">\(F\)</span> distribution. More precisely, we deal with the <span class="math inline">\(F_{q,n-k-1}\)</span> distribution where <span class="math inline">\(q\)</span> denotes the number of restrictions under the null and <span class="math inline">\(k\)</span> is the of regressors in the unrestricted model, excluding the intercept.</p>
+<p>The packages <tt>AER</tt> and <tt>MASS</tt> have been loaded. Both models (<tt>model_res</tt> and <tt>model_unres</tt>) as well as their SSR (<tt>RSSR</tt> and <tt>USSR</tt>) are available in your working environment.</p>
+<p><strong>Instructions:</strong></p>
+<ul>
+<li><p>Compute the <span class="math inline">\(F\)</span>-statistic and assign it to <tt>Fstat</tt>.</p></li>
+<li><p>Compute the <span class="math inline">\(p\)</span>-value and assign it to <tt>pval</tt>.</p></li>
+<li><p>Check whether the null is rejected at the <span class="math inline">\(1\%\)</span> level using logical operators.</p></li>
+<li><p>Verify your result by using <tt>linearHypothesis()</tt> and printing the results.</p></li>
+</ul>
+<iframe src="DCL/ex7_5.html" frameborder="0" scrolling="no" style="width:100%;height:340px">
+</iframe>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><p>The <span class="math inline">\(F\)</span>-statistic is defined as <span class="math inline">\(\frac{RSSR-USSR/q}{USSR/(n-k-1)}\)</span>.</p></li>
+<li><p>The <span class="math inline">\(p\)</span>-value can be computed as <span class="math inline">\(1-F_{q,n-k-1}(F^{act})\)</span> where <span class="math inline">\(F_{q,n-k-1}\)</span> denotes the CDF of the <span class="math inline">\(F\)</span>-distribution (<tt>pf()</tt>) with degrees of freedom <span class="math inline">\(q\)</span> and <span class="math inline">\(n-k-1\)</span> and <span class="math inline">\(F^{act}\)</span> the computed <span class="math inline">\(F\)</span>-statistic.</p></li>
+<li><p><tt>linearHypothesis()</tt> expects the unrestricted model as well as the null hypothesis as arguments.</p></li>
+</ul>
+</div>
+<div class="DCexercise">
+<h4 id="joint-hypothesis-testing---confidence-set" class="unnumbered">6. Joint Hypothesis Testing - Confidence Set</h4>
+<p>As you know from previous chapters constructing a confidence set for a single regression coefficient results in a simple confidence interval on the real line. However if we consider <span class="math inline">\(n\)</span> regression coefficients jointly (as we do in a joint hypothesis testing setting) we move from <span class="math inline">\(\mathbb{R}\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span> resulting in a n-dimensional confidence set. For the sake of illustration we then often choose <span class="math inline">\(n=2\)</span>, so that we end up with a representable two-dimensional plane.</p>
+<p>Recall the estimated model</p>
+<p><span class="math display">\[\widehat{medv}_i = \underset{(0.75)}{32.828} -\underset{(0.05)}{0.994} \times lstat_i -\underset{(0.04)}{0.083} \times crim_i + \underset{(0.01)}{0.038} \times age_i.\]</span></p>
+<p>which is available as <tt>mod</tt> in your working environment. Assume you want to test the null <span class="math inline">\(H_0: \beta_2=\beta_3=0\)</span> vs. <span class="math inline">\(H_1: \beta_2\ne 0\)</span> or <span class="math inline">\(\beta_3\ne 0\)</span>.</p>
+<p>The packages <tt>AER</tt> and <tt>MASS</tt> have been loaded.</p>
+<p><strong>Instructions:</strong></p>
+<ul>
+<li><p>Construct a <span class="math inline">\(99\%\)</span> confidence set for the coefficients of <tt>crim</tt> and <tt>lstat</tt>, that is a two-dimensional confidence set. Can you reject the null stated above?</p></li>
+<li><p>Verify your visual inspection by conducting a corresponding <span class="math inline">\(F\)</span>-test.</p></li>
+</ul>
+<iframe src="DCL/ex7_6.html" frameborder="0" scrolling="no" style="width:100%;height:340px">
+</iframe>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><p>Use <tt>confidenceEllipse()</tt> to construct a two-dimensional confidence set. Besides the coefficients for which the confidence set shall be constructed (<tt>which.coef</tt>), you have to specify the confidence level (<tt>levels</tt>).</p></li>
+<li><p>As usual you can use <tt>linearHypothesis()</tt> to conduct the <span class="math inline">\(F\)</span>-test. Note that there are two restrictions now, hence you have to pass a vector containing both restrictions.</p></li>
+</ul>
+</div>
+
+<div id="refs" class="references">
+<div>
+<p>Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., … Chang, W. (2018). rmarkdown: Dynamic Documents for R (Version 1.10). Retrieved from <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a></p>
+</div>
+<div>
+<p>Heiss, F. (2016). <em>Using R for Introductory Econometrics</em>. CreateSpace Independent Publishing Platform. Retrieved from <a href="http://www.urfie.net/" class="uri">http://www.urfie.net/</a></p>
+</div>
+<div>
+<p>Hlavac, M. (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables (Version 5.2.2). Retrieved from <a href="https://CRAN.R-project.org/package=stargazer" class="uri">https://CRAN.R-project.org/package=stargazer</a></p>
+</div>
+<div>
+<p>Kleiber, C., &amp; Zeileis, A. (2008). <em>Applied Econometrics with R</em>. Springer.</p>
+</div>
+<div>
+<p>Kleiber, C., &amp; Zeileis, A. (2017). AER: Applied Econometrics with R (Version 1.2-5). Retrieved from <a href="https://CRAN.R-project.org/package=AER" class="uri">https://CRAN.R-project.org/package=AER</a></p>
+</div>
+<div>
+<p>R Core Team. (2018). <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a></p>
+</div>
+<div>
+<p>Stock, J., &amp; Watson, M. (2015). <em>Introduction to Econometrics, Third Update, Global Edition</em>. Pearson Education Limited.</p>
+</div>
+<div>
+<p>Venables, W. N., &amp; Smith, D. M. (2010). <em>An Introduction to R</em>. Retrieved from <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a></p>
+</div>
+<div>
+<p>Wooldridge, J. (2016). <em>Introductory Econometrics</em> (Sixth). Cengage Learning.</p>
+</div>
+<div>
+<p>Xie, Y. (2018a). bookdown: Authoring Books and Technical Documents with R Markdown (Version 0.7.20). Retrieved from <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a></p>
+</div>
+<div>
+<p>Xie, Y. (2018b). knitr: A General-Purpose Package for Dynamic Report Generation in R (Version 1.20). Retrieved from <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a></p>
+</div>
+</div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-6-analysis-of-the-test-score-data-set.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": 1
+},
+"edit": {
+"link": "https://github.com/mca91/EconometricsWithR/edit/master/07-ch7.Rmd",
+"text": "Edit"
+},
+"download": ["ITER.pdf"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
